@@ -5,7 +5,10 @@ default_path = "data/yelp_business.csv"
 scope = "GLOBAL:SCOPE"
 
 [DATA_NODE.review_data]
-storage_type = "pickle"
+storage_type = "generic"
+read_fct = "__main__.get_data:function"
+read_fct_params = [ "data/yelp_review_repaired_large.csv",]
+write_fct = "__main__.write_function:function"
 scope = "GLOBAL:SCOPE"
 
 [DATA_NODE.business_name]
@@ -58,20 +61,12 @@ tasks = [
   "create_business_dict:SECTION",
   "get_business_id:SECTION",
   "get_reviews:SECTION",
-  "parse_reviews:SECTION",
-  "read_review:SECTION"
+  "parse_reviews:SECTION"
 ]
 
 [SCENARIO.scenario]
 pipelines = ["pipeline:SECTION"]
 
-[TASK.read_review]
-inputs = [ "review_path:SECTION" ]
-outputs = [ "review_data:SECTION" ]
-function = "__main__.get_data:function"
-skippable = "True:bool"
 
-[DATA_NODE.review_path]
-storage_type = "pickle"
-default_data = "data/yelp_review_repaired_large.csv"
-scope = "GLOBAL:SCOPE"
+
+

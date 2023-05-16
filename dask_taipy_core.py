@@ -1,5 +1,7 @@
 import taipy as tp
 from taipy import Gui, Config
+
+import numpy as np
 import pandas as pd
 import dask.dataframe as dd
 
@@ -27,21 +29,28 @@ def create_business_dict(business_df: pd.DataFrame):
     return business_dict
 
 
-def get_data(path_to_csv: str):
+def get_data(path_to_csv: str, optional: str = None):
     """
     Loads a csv file into a dask dataframe.
     Converts the date column to datetime.
 
     Args:
         - path_to_csv: path to the csv file
+        - optional: optional argument (currently necessary to fix Core bug with generic data nodes)
 
     Returns:
         - dataset: dask dataframe
     """
-    print("Loading data...")
     dataset = dd.read_csv(path_to_csv)
     dataset["date"] = dd.to_datetime(dataset["date"])
     return dataset
+
+
+def write_function():
+    """
+    Useless function to fix Core bug with generic data nodes.
+    """
+    return None
 
 
 def get_business_data(business_id: str, data: dd.DataFrame):
@@ -93,6 +102,12 @@ def get_id_from_name(name: str, business_dict: dict):
 
 # Taipy Core
 Config.load("config.toml")
+
+Config.configure_data_node(
+    id="review_data", read_fct_params=("data/yelp_review_repaired_large.csv",)
+)
+
+Config.export("configured")
 
 scenario_object = Config.scenarios["scenario"]
 

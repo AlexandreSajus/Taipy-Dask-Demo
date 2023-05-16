@@ -1,3 +1,4 @@
 dask
 pandas
 taipy
+numpy
