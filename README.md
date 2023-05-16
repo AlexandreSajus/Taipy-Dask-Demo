@@ -7,6 +7,13 @@ This projects focuses on using Taipy to create a Dask pipeline to run queries on
 
 ## Table of Contents
 
+- [Why Taipy?](#why-taipy)
+- [Why Dask?](#why-dask)
+- [Datasets](#datasets)
+- [Data Pipeline](#data-pipeline)
+- [Web App](#web-app)
+
+
 
 ## Why Taipy?
 Taipy is an open-source Python library that manages both front and back-end:
