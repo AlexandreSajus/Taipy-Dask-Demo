@@ -42,18 +42,23 @@ The Data Pipeline is built using Taipy Studio in VSCode and looks like this:
 Blue nodes are **Data Nodes** which store variables or datasets:
 
 <p align="center">
-    <img src="media/pipeline1.png" alt="Pipeline1" width="100%" ></img>
+    <img src="media/pipeline1-new.png" alt="Pipeline1" width="100%" ></img>
 </p>
 
 - business_data is the `yelp_business.csv` dataset as a Pandas DataFrame
 - business_dict is a dictionary mapping business ids to business names
 - business_name is the name of the business we want to query
 - business_id is the id of the business we want to query
-- review_path is the path to the `yelp_review_repaired_large.csv` dataset
-- review_data is the dataset as a Dask DataFrame
+- review_data is the `yelp_review_repaired_large.csv` dataset as a Dask DataFrame
 
 <p align="center">
-    <img src="media/pipeline2.png" alt="Pipeline2" width="100%" ></img>
+    <img src="media/generic-data.png" alt="Generic Data Node" width="70%" ></img>
+</p>
+
+review_data is a generic data node which calls a Python function as read_fct to read the dataset with a read_fct_args argument.
+
+<p align="center">
+    <img src="media/pipeline2-new.png" alt="Pipeline2" width="100%" ></img>
 </p>
 
 - raw_reviews is the reviews that we queried
@@ -62,7 +67,7 @@ Blue nodes are **Data Nodes** which store variables or datasets:
 Between the blue nodes are orange **Task Nodes** which take blue nodes as inputs and return blue nodes as outputs using Python functions.
 
 <p align="center">
-    <img src="media/pipeline3.png" alt="Pipeline3" width="70%" ></img>
+    <img src="media/pipeline3-new.png" alt="Pipeline3" width="70%" ></img>
 </p>
 
 These **Task Nodes** are called by a green node called **Pipeline Node** which is the entry point of the pipeline.
@@ -81,5 +86,5 @@ The web app is built using Taipy GUI and looks like this:
     <img src="media/dropdown.png" alt="Dropdown" width="100%" ></img>
 </p>
 
-The app allows you to select a business from a dropdown menu. This will call the pipeline, run the query and display the results: average stars and reviews for the selected business.
+The app allows you to select a business from a dropdown menu. This will call the pipeline, run the query in 5 minutes and display the results: average stars and reviews for the selected business.
 
