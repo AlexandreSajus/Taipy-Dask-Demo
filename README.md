@@ -36,7 +36,7 @@ The goal here will be to join these two datasets and run queries to find average
 The Data Pipeline is built using Taipy Studio in VSCode and looks like this:
 
 <p align="center">
-    <img src="media/data-pipeline.png" alt="Pipeline" width="100%" ></img>
+    <img src="media/data-pipeline-new.png" alt="Pipeline" width="100%" ></img>
 </p>
 
 Blue nodes are **Data Nodes** which store variables or datasets:
