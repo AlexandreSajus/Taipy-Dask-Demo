@@ -55,7 +55,7 @@ Blue nodes are **Data Nodes** which store variables or datasets:
     <img src="media/generic-data.png" alt="Generic Data Node" width="70%" ></img>
 </p>
 
-review_data is a generic data node which calls a Python function as read_fct to read the dataset with a read_fct_args argument.
+review_data is a generic data node which calls a Python function as `read_fct` to read the dataset with a `read_fct_params` argument to specify the path.
 
 <p align="center">
     <img src="media/pipeline2-new.png" alt="Pipeline2" width="100%" ></img>
