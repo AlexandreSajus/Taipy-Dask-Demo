@@ -1,0 +1,77 @@
+
+[DATA_NODE.business_data]
+storage_type = "csv"
+default_path = "data/yelp_business.csv"
+scope = "GLOBAL:SCOPE"
+
+[DATA_NODE.review_data]
+storage_type = "pickle"
+scope = "GLOBAL:SCOPE"
+
+[DATA_NODE.business_name]
+storage_type = "pickle"
+default_data = "\"Dental by Design\""
+scope = "SCENARIO:SCOPE"
+
+[DATA_NODE.business_id]
+storage_type = "pickle"
+scope = "SCENARIO:SCOPE"
+
+[DATA_NODE.raw_reviews]
+storage_type = "pickle"
+scope = "SCENARIO:SCOPE"
+
+[DATA_NODE.parsed_reviews]
+storage_type = "pickle"
+scope = "SCENARIO:SCOPE"
+
+[TASK.get_business_id]
+inputs = ["business_name:SECTION", "business_dict:SECTION"]
+outputs = ["business_id:SECTION"]
+function = "__main__.get_id_from_name:function"
+skippable = "False:bool"
+
+[TASK.get_reviews]
+inputs = ["business_id:SECTION", "review_data:SECTION"]
+outputs = ["raw_reviews:SECTION"]
+function = "__main__.get_business_data:function"
+skippable = "False:bool"
+
+[TASK.parse_reviews]
+inputs = ["raw_reviews:SECTION"]
+outputs = ["parsed_reviews:SECTION"]
+function = "__main__.parse_business_data:function"
+skippable = "False:bool"
+
+[DATA_NODE.business_dict]
+storage_type = "pickle"
+scope = "GLOBAL:SCOPE"
+
+[TASK.create_business_dict]
+inputs = ["business_data:SECTION"]
+outputs = ["business_dict:SECTION"]
+function = "__main__.create_business_dict:function"
+skippable = "True:bool"
+
+[PIPELINE.pipeline]
+tasks = [
+  "create_business_dict:SECTION",
+  "get_business_id:SECTION",
+  "get_reviews:SECTION",
+  "parse_reviews:SECTION",
+  "read_review:SECTION"
+]
+
+[SCENARIO.scenario]
+pipelines = ["pipeline:SECTION"]
+
+[TASK.read_review]
+inputs = [ "review_path:SECTION" ]
+outputs = [ "review_data:SECTION" ]
+function = "__main__.get_data:function"
+skippable = "True:bool"
+
+[DATA_NODE.review_path]
+storage_type = "pickle"
+default_data = "data/yelp_review_repaired_large.csv"
+scope = "GLOBAL:SCOPE"
