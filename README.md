@@ -55,7 +55,7 @@ Blue nodes are **Data Nodes** which store variables or datasets:
 Between the blue nodes are orange **Task Nodes** which take blue nodes as inputs and return blue nodes as outputs using Python functions.
 
 <p align="center">
-    <img src="media/pipeline3.png" alt="Pipeline3" width="100%" ></img>
+    <img src="media/pipeline3.png" alt="Pipeline3" width="70%" ></img>
 </p>
 
 These **Task Nodes** are called by a green node called **Pipeline Node** which is the entry point of the pipeline.
