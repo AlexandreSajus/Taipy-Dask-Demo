@@ -1,7 +1,7 @@
 # Querying Big Data using Taipy and Dask
 
 <p align="center">
-    <img src="media/app-screen.png" alt="WebApp" width="80%" ></img>
+    <img src="media/app-screen.png" alt="WebApp" width="100%" ></img>
 </p>
 This projects focuses on using Taipy to create a Dask pipeline to run queries on a 24Gb dataset of Yelp Reviews and to build a web app to run these queries and display the results.
 
@@ -57,7 +57,7 @@ With this pipeline, we can find reviews for a specific business from the dataset
 The web app is built using Taipy GUI and looks like this:
 
 <p align="center">
-    <img src="media/dropdown.png" alt="Dropdown" width="80%" ></img>
+    <img src="media/dropdown.png" alt="Dropdown" width="100%" ></img>
 </p>
 
 The app allows you to select a business from a dropdown menu. This will call the pipeline, run the query and display the results: average stars and reviews for the selected business.
