@@ -33,16 +33,30 @@ The Data Pipeline is built using Taipy Studio in VSCode and looks like this:
 </p>
 
 Blue nodes are **Data Nodes** which store variables or datasets:
+
+<p align="center">
+    <img src="media/pipeline1.png" alt="Pipeline1" width="100%" ></img>
+</p>
+
 - business_data is the `yelp_business.csv` dataset as a Pandas DataFrame
 - business_dict is a dictionary mapping business ids to business names
 - business_name is the name of the business we want to query
 - business_id is the id of the business we want to query
 - review_path is the path to the `yelp_review_repaired_large.csv` dataset
 - review_data is the dataset as a Dask DataFrame
+
+<p align="center">
+    <img src="media/pipeline2.png" alt="Pipeline2" width="100%" ></img>
+</p>
+
 - raw_reviews is the reviews that we queried
 - parsed_reviews is raw_reviews but filtered to only contain relevant columns
 
 Between the blue nodes are orange **Task Nodes** which take blue nodes as inputs and return blue nodes as outputs using Python functions.
+
+<p align="center">
+    <img src="media/pipeline3.png" alt="Pipeline3" width="100%" ></img>
+</p>
 
 These **Task Nodes** are called by a green node called **Pipeline Node** which is the entry point of the pipeline.
 - **Task Nodes** have a skippable property which allows them to be skipped if the output was already computed and cached
