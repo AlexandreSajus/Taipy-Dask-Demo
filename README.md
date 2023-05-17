@@ -7,13 +7,13 @@ This projects focuses on using Taipy to create a Dask pipeline to run queries on
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Why Taipy?](#why-taipy)
 - [Why Dask?](#why-dask)
 - [Datasets](#datasets)
 - [Data Pipeline](#data-pipeline)
 - [Web App](#web-app)
-
-
+- [How to Run](#how-to-run)
 
 ## Why Taipy?
 Taipy is an open-source Python library that manages both front and back-end:
@@ -88,3 +88,21 @@ The web app is built using Taipy GUI and looks like this:
 
 The app allows you to select a business from a dropdown menu. This will call the pipeline, run the query in 5 minutes and display the results: average stars and reviews for the selected business.
 
+## How to Run
+
+You can run the app using this repo which contains a smaller version of the dataset (30Mb):
+
+1. Clone the repository
+```
+git clone https://github.com/AlexandreSajus/Taipy-Dask-Demo.git
+```
+
+2. Install the requirements
+```
+pip install -r requirements.txt
+```
+
+1. Run the web app
+```
+python app.py
+```

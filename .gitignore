@@ -29,8 +29,6 @@ MANIFEST
 # Taipy
 .data/
 
-# Data
-data/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

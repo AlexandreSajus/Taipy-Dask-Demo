@@ -1,0 +1,11 @@
+business_id,name,neighborhood,address,city,state,postal_code,latitude,longitude,stars,review_count,is_open,categories
+4JNXUYY8wbaaDmk3BPzlWw,"""Mon Ami Gabi""",The Strip,"""3655 Las Vegas Blvd S""",Las Vegas,NV,89109,36.1128270642,-115.172581497,4.0,7361,1,French;Steakhouses;Restaurants;Breakfast & Brunch
+RESDUcs7fIiihp38-d6_6g,"""Bacchanal Buffet""",The Strip,"""3570 S Las Vegas Blvd""",Las Vegas,NV,89109,36.116113,-115.176222,4.0,7009,1,Sandwiches;Buffets;Restaurants;Breakfast & Brunch;Food
+K7lWdNUhCbcnEvI0NhGewg,"""Wicked Spoon""",The Strip,"""3708 Las Vegas Blvd S""",Las Vegas,NV,89109,36.109538,-115.17617,3.5,5950,1,Buffets;Breakfast & Brunch;Restaurants
+cYwJA2A6I12KNkm2rtXd5g,"""Gordon Ramsay BurGR""",The Strip,"""3667 Las Vegas Blvd S""",Las Vegas,NV,89109,36.110724,-115.172169,4.0,5447,0,American (Traditional);Burgers;Restaurants
+DkYS3arLOhA8si5uUEmHOw,"""Earl of Sandwich""",The Strip,"""3667 Las Vegas Blvd S""",Las Vegas,NV,89109,36.1082280659,-115.171869,4.5,4869,1,Caterers;Sandwiches;Restaurants;Food Delivery Services;Salad;Food;Event Planning & Services;Soup;Wraps
+f4x1YBxkLrZg652xt2KR5g,"""Hash House A Go Go""",The Strip,"""3535 Las Vegas Blvd""",Las Vegas,NV,89109,36.1181806906,-115.171579781,4.0,4774,1,American (New);Restaurants;Breakfast & Brunch
+2weQS-RnoOBhb1KsHKyoSQ,"""The Buffet""",The Strip,"""3131 Las Vegas Blvd S""",Las Vegas,NV,89109,36.1268872232,-115.165590048,3.5,4018,1,Buffets;Restaurants
+KskYqH1Bi7Z_61pH6Om8pg,"""Lotus of Siam""",Downtown,"""953 E Sahara Ave, Ste A5""",Las Vegas,NV,89104,36.14345,-115.14278,4.0,3964,1,Car Dealers;Thai;Automotive;Seafood;Bars;Wine Bars;Restaurants;Nightlife
+eoHdUeQDNgQ6WYEnP2aiRw,"""Serendipity 3""",The Strip,"""Caesars Palace Las Vegas Hotel And Casino, 3570 Las Vegas Boulevard South""",Las Vegas,NV,89109,36.1156697204,-115.17331658,3.0,3910,0,Social Clubs;Arts & Entertainment;American (Traditional);Food;American (New);Restaurants;Desserts
+ujHiaprwCQ5ewziu0Vi9rw,"""The Buffet at Bellagio""",The Strip,"""3600 S Las Vegas Blvd""",Las Vegas,NV,89109,36.11322,-115.17689,3.5,3838,1,Buffets;Restaurants;American (New)

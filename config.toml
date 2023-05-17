@@ -7,13 +7,13 @@ scope = "GLOBAL:SCOPE"
 [DATA_NODE.review_data]
 storage_type = "generic"
 read_fct = "__main__.get_data:function"
-read_fct_params = [ "data/yelp_review_repaired_large.csv",]
+read_fct_params = ["data/yelp_review.csv"]
 write_fct = "__main__.write_function:function"
 scope = "GLOBAL:SCOPE"
 
 [DATA_NODE.business_name]
 storage_type = "pickle"
-default_data = "\"Dental by Design\""
+default_data = "\"Mon Ami Gabi\""
 scope = "SCENARIO:SCOPE"
 
 [DATA_NODE.business_id]
@@ -61,12 +61,8 @@ tasks = [
   "create_business_dict:SECTION",
   "get_business_id:SECTION",
   "get_reviews:SECTION",
-  "parse_reviews:SECTION"
+  "parse_reviews:SECTION",
 ]
 
 [SCENARIO.scenario]
 pipelines = ["pipeline:SECTION"]
-
-
-
-
