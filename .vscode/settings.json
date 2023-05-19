@@ -1,3 +1,3 @@
 {
-    "taipyStudio.config.mainPythonFile": "dask_taipy_core.py"
+    "taipyStudio.config.mainPythonFile": "app.py"
 }

@@ -6,9 +6,9 @@ scope = "GLOBAL:SCOPE"
 
 [DATA_NODE.review_data]
 storage_type = "generic"
-read_fct = "__main__.get_data:function"
+read_fct = "config.config.get_data:function"
 read_fct_params = ["data/yelp_review.csv"]
-write_fct = "__main__.write_function:function"
+write_fct = "config.config.write_function:function"
 scope = "GLOBAL:SCOPE"
 
 [DATA_NODE.business_name]
@@ -31,20 +31,20 @@ scope = "SCENARIO:SCOPE"
 [TASK.get_business_id]
 inputs = ["business_name:SECTION", "business_dict:SECTION"]
 outputs = ["business_id:SECTION"]
-function = "__main__.get_id_from_name:function"
-skippable = "False:bool"
+function = "algos.algos.get_id_from_name:function"
+skippable = "True:bool"
 
 [TASK.get_reviews]
 inputs = ["business_id:SECTION", "review_data:SECTION"]
 outputs = ["raw_reviews:SECTION"]
-function = "__main__.get_business_data:function"
-skippable = "False:bool"
+function = "algos.algos.get_business_data:function"
+skippable = "True:bool"
 
 [TASK.parse_reviews]
 inputs = ["raw_reviews:SECTION"]
 outputs = ["parsed_reviews:SECTION"]
-function = "__main__.parse_business_data:function"
-skippable = "False:bool"
+function = "algos.algos.parse_business_data:function"
+skippable = "True:bool"
 
 [DATA_NODE.business_dict]
 storage_type = "pickle"
@@ -53,7 +53,7 @@ scope = "GLOBAL:SCOPE"
 [TASK.create_business_dict]
 inputs = ["business_data:SECTION"]
 outputs = ["business_dict:SECTION"]
-function = "__main__.create_business_dict:function"
+function = "algos.algos.create_business_dict:function"
 skippable = "True:bool"
 
 [PIPELINE.pipeline]
