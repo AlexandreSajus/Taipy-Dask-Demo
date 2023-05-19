@@ -32,8 +32,6 @@ def on_selection(state):
     scenario = tp.create_scenario(scenario_object)
     scenario.business_name.write(state.business_name)
     tp.submit(scenario)
-
-    tp.submit(scenario)
     state.reviews = scenario.parsed_reviews.read()
     notify(state, "success", "Query finished")
     print("Query finished")
