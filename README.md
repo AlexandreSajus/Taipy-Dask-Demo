@@ -1,9 +1,9 @@
 # Querying Big Data using Taipy and Dask
 
 <p align="center">
-    <img src="media/app-screen.png" alt="WebApp" width="100%" ></img>
+    <img src="media/app-screen-new.png" alt="WebApp" width="100%" ></img>
 </p>
-This projects focuses on using Taipy to create a Dask pipeline to run queries on a 24Gb dataset of Yelp Reviews and to build a web app to run these queries and display the results.
+This project focuses on using Taipy to create a Dask pipeline to run queries on a 24Gb dataset of Yelp Reviews and to build a web app to run these queries and display the results.
 
 ## Table of Contents
 
@@ -21,7 +21,7 @@ Taipy is an open-source Python library that manages both front and back-end:
 - Taipy Core helps manage data pipelines by visualizing them and caching already computed results
 
 ## Why Dask?
-Pandas is a great library when it comes to data analysis, but it is not designed to handle large datasets. Dask is a library that extends Pandas to parallelize computations and handle bigger than memory datasets.
+Pandas is a great library when it comes to data analysis, but it is not designed to handle large datasets. Dask is a library that extends Pandas to parallelize computations and handle bigger-than-memory datasets.
 
 ## Datasets
 
@@ -71,7 +71,8 @@ Between the blue nodes are orange **Task Nodes** which take blue nodes as inputs
 </p>
 
 These **Task Nodes** are called by a green node called **Pipeline Node** which is the entry point of the pipeline.
-- **Task Nodes** have a skippable property which allows them to be skipped if the output was already computed and cached
+
+**Task Nodes have a skippable property which allows them to be skipped if the output was already computed and cached**
 - For example, if we already ran a first query and then run a second one, Taipy will log:
 - `[2023-05-16 04:40:06,858][Taipy][INFO] job JOB_read_review_39d2bb45-8901-4081-b877-2e308507bb90 is skipped.`
 - meaning it did not read the dataset again but used the cached result instead.
@@ -83,7 +84,7 @@ With this pipeline, we can find reviews for a specific business from the dataset
 The web app is built using Taipy GUI and looks like this:
 
 <p align="center">
-    <img src="media/dropdown.png" alt="Dropdown" width="100%" ></img>
+    <img src="media/dropdown-new.png" alt="Dropdown" width="100%" ></img>
 </p>
 
 The app allows you to select a business from a dropdown menu. This will call the pipeline, run the query in 5 minutes and display the results: average stars and reviews for the selected business.
