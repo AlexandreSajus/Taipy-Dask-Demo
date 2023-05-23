@@ -17,8 +17,9 @@ Config.load("config/config.toml")
 Config.configure_data_node(id="review_data", read_fct_params=("data/yelp_review.csv",))
 
 scenario_object = Config.scenarios["scenario"]
-business_name = '"Mon Ami Gabi"'
+business_name = business_df.name[0]
 reviews = None
+
 
 def on_selection(state):
     """
@@ -27,17 +28,15 @@ def on_selection(state):
     Args:
         - state: state of the app
     """
-    print("Running query...")
     notify(state, "info", "Running query...")
     scenario = tp.create_scenario(scenario_object)
     scenario.business_name.write(state.business_name)
     tp.submit(scenario)
     state.reviews = scenario.parsed_reviews.read()
     notify(state, "success", "Query finished")
-    print("Query finished")
 
 
-page = """<|toggle|theme|>
+page = """
 
 # Querying **Big Data**{: .color-primary} with Taipy and Dask
 

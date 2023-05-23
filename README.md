@@ -30,7 +30,7 @@ Pandas is an excellent library for data analysis, but it is not designed to hand
 
 The datasets used in this project are based on Yelp Reviews datasets:
 - `data/yelp_business.csv` contains information about businesses (mainly name and id)
-- `data/yelp.csv` is a 24Gb dataset containing Yelp reviews (mainly business id, text, and stars)
+- `data/yelp_review.csv` is a 24Gb dataset containing Yelp reviews (mainly business id, text, and stars)
 
 The goal will be to join these two datasets and run queries to find average stars and reviews for a specific business.
 
