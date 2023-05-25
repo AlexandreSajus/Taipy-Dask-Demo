@@ -13,7 +13,7 @@ scope = "GLOBAL:SCOPE"
 
 [DATA_NODE.business_name]
 storage_type = "pickle"
-default_data = "\"Mon Ami Gabi\""
+default_data = "Mon Ami Gabi"
 scope = "SCENARIO:SCOPE"
 
 [DATA_NODE.business_id]
@@ -50,7 +50,7 @@ skippable = "True:bool"
 storage_type = "pickle"
 scope = "GLOBAL:SCOPE"
 
-[TASK.create_business_dict]
+[TASK.preprocessing]
 inputs = ["business_data:SECTION"]
 outputs = ["business_dict:SECTION"]
 function = "algos.algos.create_business_dict:function"
@@ -58,7 +58,7 @@ skippable = "True:bool"
 
 [PIPELINE.pipeline]
 tasks = [
-  "create_business_dict:SECTION",
+  "preprocessing:SECTION",
   "get_business_id:SECTION",
   "get_reviews:SECTION",
   "parse_reviews:SECTION",

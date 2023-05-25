@@ -33,6 +33,7 @@ def parse_business_data(data: dd.DataFrame):
     data = data[["stars", "date", "text"]]
     return data
 
+
 def get_business_data(business_id: str, data: dd.DataFrame):
     """
     Returns a dask dataframe with the reviews of a business.
@@ -58,8 +59,8 @@ def create_business_dict(business_df: pd.DataFrame):
     Returns:
         - business_dict: dict with the name as key and the business_id as value
     """
+    # Remove quotation marks from the name
+    business_df.name = business_df.name.str[1:-1]
     business_dict = dict(zip(business_df.name, business_df.business_id))
+    print(business_dict)
     return business_dict
-
-
-

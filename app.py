@@ -11,6 +11,9 @@ BUSINESS_PATH = "data/yelp_business.csv"
 # Load the business data using pandas
 business_df = pd.read_csv(BUSINESS_PATH)
 
+# Remove quotation marks from the name
+business_df.name = business_df.name.str[1:-1]
+
 # Taipy Core
 Config.load("config/config.toml")
 
