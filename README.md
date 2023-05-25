@@ -6,7 +6,8 @@
 
 This project uses Taipy to create a Dask pipeline to run queries on a 24Gb dataset of Yelp Reviews and build a web app to run these queries and display the results.
 
-Taipy is a great way to manage and display the results of Dask applications, as its backend is built for large-scale applications and can handle caching and parallelization.
+Taipy is a great way to manage and display the results of Dask applications, as its backend is built for large-scale applications and can handle caching, parallelization, scenario management, pipeline versioning, data scoping, etc.
+
 
 ## Table of Contents
 
@@ -21,15 +22,15 @@ Taipy is a great way to manage and display the results of Dask applications, as 
 ## Why Taipy?
 Taipy is an open-source Python library that manages both front and back-end:
 - Taipy GUI helps create web apps quickly using only Python code
-- Taipy Core helps manage data pipelines by visualizing them and caching already computed results
+- Taipy Core manages data pipelines through a visual editor where parallelization, caching and scoping are easily defined
 
 ## Why Dask?
-Pandas is an excellent library for data analysis, but it is not designed to handle large datasets. Dask is a library that extends Pandas to parallelize computations and handle bigger-than-memory datasets.
+Pandas is an excellent library for data analysis, but it is not designed to handle large datasets. Dask is a library that extends Pandas to parallelize computations and handle ("out-of-core") datasets.
 
 ## Datasets
 
 The datasets used in this project are based on Yelp Reviews datasets:
-- `data/yelp_business.csv` contains information about businesses (mainly name and id)
+- `data/yelp_business.csv` contains the reference information about businesses (mainly name and id)
 - `data/yelp_review.csv` is a 24Gb dataset containing Yelp reviews (mainly business id, text, and stars)
 
 The goal will be to join these two datasets and run queries to find average stars and reviews for a specific business.
@@ -42,13 +43,13 @@ The Data Pipeline is built using Taipy Studio in VSCode and looks like this:
     <img src="media/data-pipeline-new.png" alt="Pipeline" width="100%" ></img>
 </p>
 
-Blue nodes are **Data Nodes** that store variables or datasets:
+Blue nodes are **Data Nodes** that store Python variables or datasets:
 
 <p align="center">
     <img src="media/pipeline1-new.png" alt="Pipeline1" width="100%" ></img>
 </p>
 
-- business_data is the `yelp_business.csv` dataset as a Pandas DataFrame
+- business_data is the `yelp_business.csv` dataset represented as a Pandas DataFrame
 - business_dict is a dictionary mapping business ids to business names
 - business_name is the name of the business we want to query
 - business_id is the id of the business we want to query
@@ -58,29 +59,31 @@ Blue nodes are **Data Nodes** that store variables or datasets:
     <img src="media/generic-data.png" alt="Generic Data Node" width="70%" ></img>
 </p>
 
-review_data is a generic data node that calls a Python function `read_fct` to read the dataset with a `read_fct_params` argument to specify the path.
+review_data is a *generic* data node that calls a Python function `read_fct` to read the dataset with a `read_fct_params` argument to specify the path.
 
 <p align="center">
     <img src="media/pipeline2-new.png" alt="Pipeline2" width="100%" ></img>
 </p>
 
-- raw_reviews is the reviews that we queried
+- raw_reviews contains the reviews that we queried
 - parsed_reviews is raw_reviews but filtered only to contain relevant columns
 
-Between the blue nodes are orange **Task Nodes**, which take blue nodes as inputs and return blue nodes as outputs using Python functions.
+Between the data nodes (in blue) are **Task Nodes** (in orange). Task Nodes take Data Nodes as inputs and return Data Nodes as outputs using Python functions.
 
 <p align="center">
     <img src="media/pipeline3-new.png" alt="Pipeline3" width="70%" ></img>
 </p>
 
-These **Task Nodes** are called by a green node called the **Pipeline**** Node**, which is the entry point of the pipeline.
+These Task Nodes are combined into a pipeline using a green node called the Pipeline** Node**, which is the entry point of the pipeline. (Note that Taipy allows for several Pipelines Nodes to co-exist)   
+Task Nodes have a skippable property that allows them to be skipped if the output was already computed and cached.
 
-**Task Nodes have a skippable property which allows them to be skipped if the output was already computed and cached**
-- For example, if we already ran a first query and then run a second one, Taipy will log:
-- `[2023-05-16 04:40:06,858][Taipy][INFO] job JOB_read_review_39d2bb45-8901-4081-b877-2e308507bb90 is skipped.`
+Example:
+- Let’s set the parameter skippable to True for the get_reviews task.
+- Let’s run the pipeline once
+- Then run it a second time, Taipy will log:
+- `[2023-05-16 04:40:06,858][Taipy][INFO] job JOB_getread_reviews_39d2bb45-8901-4081-b877-2e308507bb90 is skipped.`
 - meaning it did not reread the dataset but used the cached result instead.
 
-This pipeline can find reviews for a specific business from the datasets.
 
 ## Web App
 
