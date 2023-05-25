@@ -40,13 +40,13 @@ The goal will be to join these two datasets and run queries to find average star
 The Data Pipeline is built using Taipy Studio in VSCode and looks like this:
 
 <p align="center">
-    <img src="media/data-pipeline-new.png" alt="Pipeline" width="100%" ></img>
+    <img src="media/data-pipeline.png" alt="Pipeline" width="100%" ></img>
 </p>
 
 Blue nodes are **Data Nodes** that store Python variables or datasets:
 
 <p align="center">
-    <img src="media/pipeline1-new.png" alt="Pipeline1" width="100%" ></img>
+    <img src="media/pipeline1.png" alt="Pipeline1" width="100%" ></img>
 </p>
 
 - business_data is the `yelp_business.csv` dataset represented as a Pandas DataFrame
@@ -62,7 +62,7 @@ Blue nodes are **Data Nodes** that store Python variables or datasets:
 review_data is a *generic* data node that calls a Python function `read_fct` to read the dataset with a `read_fct_params` argument to specify the path.
 
 <p align="center">
-    <img src="media/pipeline2-new.png" alt="Pipeline2" width="100%" ></img>
+    <img src="media/pipeline2.png" alt="Pipeline2" width="100%" ></img>
 </p>
 
 - raw_reviews contains the reviews that we queried
@@ -71,7 +71,7 @@ review_data is a *generic* data node that calls a Python function `read_fct` to 
 Between the data nodes (in blue) are **Task Nodes** (in orange). Task Nodes take Data Nodes as inputs and return Data Nodes as outputs using Python functions.
 
 <p align="center">
-    <img src="media/pipeline3-new.png" alt="Pipeline3" width="70%" ></img>
+    <img src="media/pipeline3.png" alt="Pipeline3" width="70%" ></img>
 </p>
 
 These Task Nodes are combined into a pipeline using a green node called the Pipeline** Node**, which is the entry point of the pipeline. (Note that Taipy allows for several Pipelines Nodes to co-exist)   
