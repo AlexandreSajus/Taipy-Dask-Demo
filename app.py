@@ -32,8 +32,14 @@ def on_selection(state):
         - state: state of the app
     """
     notify(state, "info", "Running query...")
-    scenario = tp.create_scenario(scenario_object)
-    scenario.business_name.write(state.business_name)
+    business_scenarios = [
+        s for s in tp.get_scenarios() if s.name == state.business_name
+    ]
+    if len(business_scenarios) > 0:
+        scenario = business_scenarios[0]
+    else:
+        scenario = tp.create_scenario(scenario_object, name=state.business_name)
+        scenario.business_name.write(state.business_name)
     tp.submit(scenario)
     state.reviews = scenario.parsed_reviews.read()
     notify(state, "success", "Query finished")
@@ -60,7 +66,7 @@ page = """
 
 
 def on_init(state):
-    scenario = tp.create_scenario(scenario_object)
+    scenario = tp.create_scenario(scenario_object, name=state.business_name)
     tp.submit(scenario)
     state.reviews = scenario.parsed_reviews.read()
 

@@ -16,8 +16,11 @@ Taipy is a great way to manage and display the results of Dask applications, as 
 - [Why Dask?](#why-dask)
 - [Datasets](#datasets)
 - [Data Pipeline](#data-pipeline)
+- [Caching](#caching)
+- [Scenarios](#scenarios)
 - [Web App](#web-app)
 - [How to Run](#how-to-run)
+
 
 ## Why Taipy?
 Taipy is an open-source Python library that manages both front and back-end:
@@ -75,6 +78,9 @@ Between the data nodes (in blue) are **Task Nodes** (in orange). Task Nodes take
 </p>
 
 These Task Nodes are combined into a pipeline using a green node called the Pipeline** Node**, which is the entry point of the pipeline. (Note that Taipy allows for several Pipelines Nodes to co-exist)   
+
+## Caching
+
 Task Nodes have a skippable property that allows them to be skipped if the output was already computed and cached.
 
 Example:
@@ -84,6 +90,18 @@ Example:
 - `[2023-05-16 04:40:06,858][Taipy][INFO] job JOB_getread_reviews_39d2bb45-8901-4081-b877-2e308507bb90 is skipped.`
 - meaning it did not reread the dataset but used the cached result instead.
 
+## Scenarios
+
+Taipy also allows you not to re-run scenarios that have already been run. For example, if you query the reviews for "Mon Ami Gabi". The next time you want to query the reviews for "Mon Ami Gabi", Taipy will log:
+
+```
+[2023-05-25 15:07:05,230][Taipy][INFO] job JOB_preprocessing_e0dc369a-a082-4524-8421-bef572e3643c is skipped.
+[2023-05-25 15:07:05,275][Taipy][INFO] job JOB_get_business_id_6b8c7eb2-90c1-400a-acd8-1570e96464c3 is skipped.
+[2023-05-25 15:07:05,317][Taipy][INFO] job JOB_get_reviews_e2a4f00c-1de7-4b05-8615-ebb778fbf5dc is skipped.
+[2023-05-25 15:07:05,344][Taipy][INFO] job JOB_parse_reviews_3770539d-6fde-4a28-9ba1-bd0607758f1f is skipped.
+```
+
+Signaling that the pipeline did not run any tasks because the scenario was already run. The results will be displayed immediately.
 
 ## Web App
 
